@@ -15,7 +15,7 @@ plugins/equipe/
   hooks/hooks.json                entrega as regras ao Claude toda vez que uma sessão começa
   agents/
     leitor-planilhas.md           Haiku  - lê e descreve planilhas grandes
-    conferente-planilhas.md       Haiku  - confere totais e erros depois de alterar
+    conferente-planilhas.md       Sonnet - confere totais e erros depois de alterar
     explorador.md                 Haiku  - busca arquivos em projetos
     log-reader.md                 Haiku  - lê logs de testes
     revisor-codigo.md             Sonnet - revisa mudanças antes do commit
@@ -34,9 +34,10 @@ No Claude Code, os subagentes aparecem com o prefixo do plugin: `equipe:leitor-p
 | Modelo financeiro complexo, ou planilha montada de muitos arquivos | **Opus 5.5** (`/model opus`) | Precisa de mais raciocínio |
 | Projetos do GitHub (qualquer outra pasta) | **Opus 5.5** | Padrão recomendado para código |
 | Refatoração ou migração grande num projeto | **Fable 5.2** (`/model`) | O mais capaz; use só quando Opus em `high` não der conta |
-| Ler, buscar, conferir, ler logs | **Haiku 5.5** (subagentes) | Erros fáceis de perceber; custa muito pouco |
+| Ler, buscar, ler logs | **Haiku 5.5** (subagentes) | Erros fáceis de perceber; custa muito pouco |
+| Conferir planilhas, revisar código | **Sonnet 5.5** (subagentes) | O trabalho é achar erros; um erro de quem confere passaria despercebido |
 
-Cada subagente diz no próprio arquivo qual modelo usa (`model:`). Não defina `CLAUDE_CODE_SUBAGENT_MODEL`: essa configuração passaria por cima disso e o revisor deixaria de usar Sonnet.
+Cada subagente diz no próprio arquivo qual modelo usa (`model:`). Não defina `CLAUDE_CODE_SUBAGENT_MODEL`: essa configuração passaria por cima disso e o revisor e o conferente deixariam de usar Sonnet.
 
 ## Como instalar (uma vez em cada computador)
 
