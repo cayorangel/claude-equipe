@@ -1,0 +1,19 @@
+{
+  "name": "claude-equipe",
+  "owner": {
+    "name": "cayorangel"
+  },
+  "metadata": {
+    "description": "Minha equipe no Claude Code: um gerente (Opus) que delega leitura, busca e conferência para subagentes mais baratos."
+  },
+  "plugins": [
+    {
+      "name": "equipe",
+      "source": "./plugins/equipe",
+      "description": "Equipe de subagentes (planilhas, busca, logs, revisão de código) e as regras de trabalho do gerente.",
+      "author": {
+        "name": "cayorangel"
+      }
+    }
+  ]
+}

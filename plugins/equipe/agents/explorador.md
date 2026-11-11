@@ -1,5 +1,5 @@
 ---
-name: Explore
+name: explorador
 description: Procura arquivos e explica a estrutura de um projeto ou pasta - onde fica cada coisa, quais arquivos tratam de um assunto. Use para buscas e para entender um repositório antes de editar.
 tools: Read, Grep, Glob
 model: haiku

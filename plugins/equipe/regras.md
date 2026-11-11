@@ -9,11 +9,11 @@ Delegue aos subagentes apenas trabalho em que um erro é fácil de perceber:
 
 | Subagente | Quando usar |
 |---|---|
-| `leitor-planilhas` | Antes de mexer numa planilha ou CSV grande: entender abas, colunas, tipos, linhas e problemas |
-| `conferente-planilhas` | Depois de gerar ou alterar uma planilha: conferir totais, contagens e erros de fórmula |
-| `Explore` | Procurar arquivos e entender a estrutura de um repositório |
-| `log-reader` | Ler saída de testes e logs e listar as falhas |
-| `revisor-codigo` | Revisar as mudanças antes de um commit |
+| `equipe:leitor-planilhas` | Antes de mexer numa planilha ou CSV grande: entender abas, colunas, tipos, linhas e problemas |
+| `equipe:conferente-planilhas` | Depois de gerar ou alterar uma planilha: conferir totais, contagens e erros de fórmula |
+| `equipe:explorador` | Procurar arquivos e entender a estrutura de um repositório |
+| `equipe:log-reader` | Ler saída de testes e logs e listar as falhas |
+| `equipe:revisor-codigo` | Revisar as mudanças antes de um commit |
 
 Tarefas independentes podem ir para vários subagentes em paralelo.
 
@@ -23,13 +23,13 @@ Tarefas independentes podem ir para vários subagentes em paralelo.
 - Para `.xlsx`, use Python com `openpyxl` (ou `pandas` para análise). Se não estiver instalado, me diga o que vai instalar e por quê.
 - Preserve fórmulas, formatação e abas que eu não pedi para mudar.
 - Prefira fórmulas do Excel a valores fixos quando o resultado precisar se atualizar.
-- Ao terminar, peça ao `conferente-planilhas` para checar o resultado e me mostre um resumo do que mudou.
+- Ao terminar, peça ao `equipe:conferente-planilhas` para checar o resultado e me mostre um resumo do que mudou.
 
 ## Projetos no GitHub
 
-- Antes de editar, entenda o projeto (use `Explore`).
+- Antes de editar, entenda o projeto (use `equipe:explorador`).
 - Rode os testes ou o build depois de mudar algo, se o projeto tiver.
-- Faça commit só quando eu pedir. Antes, peça ao `revisor-codigo` para revisar.
+- Faça commit só quando eu pedir. Antes, peça ao `equipe:revisor-codigo` para revisar.
 
 ## Quando o resultado não estiver bom
 

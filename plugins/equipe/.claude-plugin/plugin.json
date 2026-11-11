@@ -1,0 +1,8 @@
+{
+  "name": "equipe",
+  "version": "1.0.0",
+  "description": "Equipe de subagentes (planilhas, busca, logs, revisão de código) e as regras de trabalho do gerente.",
+  "author": {
+    "name": "cayorangel"
+  }
+}
