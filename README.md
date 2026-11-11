@@ -10,7 +10,8 @@ A equipe é um **plugin do Claude Code**. Você instala uma vez em cada computad
 .claude-plugin/marketplace.json   "loja" com um único plugin: a equipe
 plugins/equipe/
   .claude-plugin/plugin.json      nome e versão do plugin
-  regras.md                       regras de trabalho (o "manual" do gerente)
+  regras.md                       regras de trabalho (o "manual" do gerente) - é este que se edita
+  regras.json                     as mesmas regras em JSON, gerado a partir do regras.md (não edite à mão)
   hooks/hooks.json                entrega as regras ao Claude toda vez que uma sessão começa
   agents/
     leitor-planilhas.md           Haiku  - lê e descreve planilhas grandes
@@ -20,6 +21,7 @@ plugins/equipe/
     revisor-codigo.md             Sonnet - revisa mudanças antes do commit
 pasta-planilhas/.claude/
   settings.json                   modelo do arquivo que a instalação cria na sua pasta de planilhas (usa Sonnet lá)
+scripts/gerar-regras-json.py      gera o regras.json a partir do regras.md
 ```
 
 No Claude Code, os subagentes aparecem com o prefixo do plugin: `equipe:leitor-planilhas`, `equipe:explorador` etc.
@@ -51,7 +53,7 @@ Depois de reabrir, pergunte "quais subagentes você tem?" para ver a equipe.
 
 Requisitos:
 - Claude Code **v2.1.293 ou mais novo** (para o apelido `haiku` apontar para o Haiku 5.5). Veja com `claude --version`.
-- Git instalado (o Claude Code oferece para instalar se faltar). No Windows, o Git também traz o Git Bash, que o plugin usa para entregar as regras.
+- Git instalado (o Claude Code oferece para instalar se faltar). No Windows, se o instalador normal pedir administrador, o MinGit (versão portátil oficial) também serve; sem Git Bash, o Claude Code usa o PowerShell para entregar as regras, e os acentos chegam certos do mesmo jeito.
 - Se este repositório for **privado**, o Git do computador precisa estar logado na sua conta do GitHub.
 - Para mexer em `.xlsx`, o Claude Code usa Python. Se não tiver, ele vai pedir para instalar - pode aceitar.
 
@@ -59,7 +61,7 @@ Requisitos:
 
 Em qualquer computador, peça ao Claude Code algo como:
 
-> Na minha equipe (repositório `cayorangel/claude-equipe`), mude a regra X / crie um subagente para Y. Aumente a versão em `plugins/equipe/.claude-plugin/plugin.json`, faça commit e push.
+> Na minha equipe (repositório `cayorangel/claude-equipe`), mude a regra X / crie um subagente para Y. Se mudar `plugins/equipe/regras.md`, rode `python scripts/gerar-regras-json.py` para atualizar o `regras.json`. Aumente a versão em `plugins/equipe/.claude-plugin/plugin.json`, faça commit e push.
 
 **Importante:** aumentar a versão (ex.: `1.0.0` → `1.0.1`) é o que avisa os outros computadores que há novidade. Sem isso, eles não atualizam.
 
