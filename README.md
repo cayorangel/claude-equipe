@@ -19,7 +19,7 @@ plugins/equipe/
     log-reader.md                 Haiku  - lê logs de testes
     revisor-codigo.md             Sonnet - revisa mudanças antes do commit
 pasta-planilhas/.claude/
-  settings.json                   faz o Claude Code usar Sonnet dentro da sua pasta de planilhas
+  settings.json                   modelo do arquivo que a instalação cria na sua pasta de planilhas (usa Sonnet lá)
 ```
 
 No Claude Code, os subagentes aparecem com o prefixo do plugin: `equipe:leitor-planilhas`, `equipe:explorador` etc.
@@ -44,11 +44,10 @@ Abra o Claude Code **no próprio computador** (app desktop ou terminal, não a v
 > 1. Rode `claude plugin marketplace add cayorangel/claude-equipe` e depois `claude plugin install equipe@claude-equipe`.
 > 2. No meu `~/.claude/settings.json`, juntando com o que já existe e sem apagar nada: na entrada `claude-equipe` de `extraKnownMarketplaces` (criada pelo passo 1), acrescente `"autoUpdate": true`; e coloque `"model": "opus"`. Me mostre a diferença antes de salvar.
 > 3. Se existir um `~/.claude/CLAUDE.md` com as regras antigas desta equipe, ou uma pasta `~/.claude/agents` com os subagentes antigos (leitor-planilhas, conferente-planilhas, Explore, log-reader, revisor-codigo), me mostre e pergunte se posso apagar, porque agora eles vêm do plugin.
-> 4. Copie `pasta-planilhas/.claude/settings.json` deste repositório para `<COLOQUE O CAMINHO DA PASTA DE PLANILHAS AQUI>\.claude\settings.json`, juntando se já existir.
+> 4. Me pergunte onde fica minha pasta de planilhas. Se eu tiver uma, crie nela o arquivo `.claude/settings.json` com `"model": "sonnet"` (igual a `pasta-planilhas/.claude/settings.json` deste repositório). Se já existir, junte sem apagar nada e me mostre a diferença antes de salvar. Se eu disser que não tenho, pule este passo.
+> 5. No final, me diga o que foi feito e peça para eu fechar e abrir o Claude Code.
 
-No computador de casa, se não tiver pasta de planilhas, apague o passo 4 antes de colar.
-
-Depois, feche e abra o Claude Code e digite `/agents` para ver a equipe.
+Depois de reabrir, pergunte "quais subagentes você tem?" para ver a equipe.
 
 Requisitos:
 - Claude Code **v2.1.293 ou mais novo** (para o apelido `haiku` apontar para o Haiku 5.5). Veja com `claude --version`.
