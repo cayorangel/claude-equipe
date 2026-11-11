@@ -1,7 +1,7 @@
 ---
 name: log-reader
 description: Lê saída de testes e logs e relata cada falha. Use depois de rodar testes ou um build.
-tools: Read, Grep, Glob, Bash
+tools: Read, Grep, Glob, Bash, PowerShell
 model: haiku
 ---
 

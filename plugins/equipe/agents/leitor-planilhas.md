@@ -1,7 +1,7 @@
 ---
 name: leitor-planilhas
 description: Lê planilhas (.xlsx, .xls, .csv) e descreve a estrutura - abas, colunas, tipos de dado, número de linhas, células vazias, duplicatas e erros de fórmula. Use antes de alterar ou analisar uma planilha, principalmente as grandes.
-tools: Read, Grep, Glob, Bash
+tools: Read, Grep, Glob, Bash, PowerShell
 model: haiku
 ---
 

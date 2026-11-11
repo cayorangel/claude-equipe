@@ -1,7 +1,7 @@
 ---
 name: revisor-codigo
 description: Revisa as mudanças ainda não commitadas (git diff) procurando bugs, coisas esquecidas e segredos expostos. Use antes de cada commit.
-tools: Read, Grep, Glob, Bash
+tools: Read, Grep, Glob, Bash, PowerShell
 model: sonnet
 ---
 
