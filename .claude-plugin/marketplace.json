@@ -4,13 +4,21 @@
     "name": "cayorangel"
   },
   "metadata": {
-    "description": "Minha equipe no Claude Code: um gerente (Opus) que delega leitura, busca e conferência para subagentes mais baratos."
+    "description": "Minha equipe no Claude Code: um gerente (Opus) que delega leitura, busca e conferência para subagentes mais baratos, e um painel para acompanhar o trabalho ao vivo."
   },
   "plugins": [
     {
       "name": "equipe",
       "source": "./plugins/equipe",
       "description": "Equipe de subagentes (planilhas, busca, logs, revisão de código) e as regras de trabalho do gerente.",
+      "author": {
+        "name": "cayorangel"
+      }
+    },
+    {
+      "name": "equipe-ao-vivo",
+      "source": "./plugins/equipe-ao-vivo",
+      "description": "Painel ao lado do chat que mostra, ao vivo, o que o gerente e cada subagente estão fazendo.",
       "author": {
         "name": "cayorangel"
       }

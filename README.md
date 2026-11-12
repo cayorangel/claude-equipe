@@ -7,7 +7,13 @@ A equipe é um **plugin do Claude Code**. Você instala uma vez em cada computad
 ## O que tem aqui
 
 ```
-.claude-plugin/marketplace.json   "loja" com um único plugin: a equipe
+.claude-plugin/marketplace.json   "loja" com dois plugins: a equipe e o painel "Equipe ao vivo"
+plugins/equipe-ao-vivo/
+  .claude-plugin/plugin.json      nome e versão do painel
+  hooks/hooks.json                diz ao Claude Code qual arquivo é o painel
+  hooks/register.tsx              o painel ao lado do chat que mostra o que cada agente está fazendo
+  types/index.d.ts                os dados que o painel guarda
+  tests/painel.test.tsx           testes automáticos do painel (claude plugin test plugins/equipe-ao-vivo)
 plugins/equipe/
   .claude-plugin/plugin.json      nome e versão do plugin
   regras.md                       regras de trabalho (o "manual" do gerente) - é este que se edita
@@ -44,7 +50,7 @@ Cada subagente diz no próprio arquivo qual modelo usa (`model:`). Não defina `
 Abra o Claude Code **no próprio computador** (app desktop ou terminal, não a versão na nuvem), em qualquer pasta, e cole:
 
 > Instale minha equipe do Claude Code:
-> 1. Rode `claude plugin marketplace add cayorangel/claude-equipe` e depois `claude plugin install equipe@claude-equipe`.
+> 1. Rode `claude plugin marketplace add cayorangel/claude-equipe`, depois `claude plugin install equipe@claude-equipe` e, por último, `claude plugin install equipe-ao-vivo@claude-equipe`.
 > 2. No meu `~/.claude/settings.json`, juntando com o que já existe e sem apagar nada: na entrada `claude-equipe` de `extraKnownMarketplaces` (criada pelo passo 1), acrescente `"autoUpdate": true`; e coloque `"model": "opus"`. Me mostre a diferença antes de salvar.
 > 3. Se existir um `~/.claude/CLAUDE.md` com as regras antigas desta equipe, ou uma pasta `~/.claude/agents` com os subagentes antigos (leitor-planilhas, conferente-planilhas, Explore, log-reader, revisor-codigo), me mostre e pergunte se posso apagar, porque agora eles vêm do plugin.
 > 4. Me pergunte onde fica minha pasta de planilhas. Se eu tiver uma, crie nela o arquivo `.claude/settings.json` com `"model": "sonnet"` (igual a `pasta-planilhas/.claude/settings.json` deste repositório). Se já existir, junte sem apagar nada e me mostre a diferença antes de salvar. Se eu disser que não tenho, pule este passo.
@@ -57,6 +63,17 @@ Requisitos:
 - Git instalado (o Claude Code oferece para instalar se faltar). No Windows, se o instalador normal pedir administrador, o MinGit (versão portátil oficial) também serve; sem Git Bash, o Claude Code usa o PowerShell para entregar as regras, e os acentos chegam certos do mesmo jeito.
 - Se este repositório for **privado**, o Git do computador precisa estar logado na sua conta do GitHub.
 - Para mexer em `.xlsx`, o Claude Code usa Python. Se não tiver, ele vai pedir para instalar - pode aceitar.
+
+Quem já tinha a equipe instalada só precisa rodar `claude plugin install equipe-ao-vivo@claude-equipe` e reabrir o Claude Code para ganhar o painel.
+
+## Painel "Equipe ao vivo"
+
+Um painel ao lado do chat (no app desktop e no terminal) que mostra, enquanto o trabalho acontece:
+
+- o **Gerente**: se está trabalhando ou esperando você, e a ação do momento;
+- **cada subagente chamado**: nome, tarefa recebida, estado (● trabalhando, ✓ concluído, ■ interrompido, ✗ erro), quantas ações fez, quanto tempo levou e qual modelo usou.
+
+Ele abre sozinho em cada sessão; se fechar, digite `/equipe`. O botão **Limpar concluídos** tira da lista quem já terminou com sucesso. O painel só observa: não muda nem bloqueia nada do que os agentes fazem. Precisa de um Claude Code recente (testado na v2.1.321); em versões antigas ele simplesmente não aparece, e a equipe funciona normalmente.
 
 ## Como mudar a equipe
 
