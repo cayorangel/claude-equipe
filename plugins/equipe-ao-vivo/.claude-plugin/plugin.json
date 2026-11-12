@@ -1,9 +1,0 @@
-{
-  "name": "equipe-ao-vivo",
-  "version": "1.0.0",
-  "description": "Painel ao lado do chat que mostra, ao vivo, o que o gerente e cada subagente estão fazendo.",
-  "author": {
-    "name": "cayorangel"
-  },
-  "types": "./types/index.d.ts"
-}
