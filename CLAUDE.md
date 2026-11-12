@@ -47,3 +47,4 @@ Antes de eu trocar de modelo no meio de um trabalho, escreva um resumo curto do 
 - Este repositório é **público**. Planilhas, currículos e qualquer arquivo que eu mandar na conversa são meus e **nunca** podem ser adicionados ao Git, commitados ou enviados (push). Trabalhe com eles só na pasta `arquivos/`, que o `.gitignore` deixa fora do Git.
 - Quando eu mandar um arquivo na conversa, copie para `arquivos/` antes de mexer. Salve o resultado também em `arquivos/` e me diga o nome do arquivo gerado.
 - Não mude a configuração da equipe (regras, subagentes, plugins) a não ser que eu peça.
+- Para eu acompanhar a equipe: antes de delegar, crie uma tarefa na lista de tarefas com o nome do subagente e o que ele vai fazer (ex.: "Explorador: listar arquivos"). Marque como em andamento ao delegar e como concluída quando ele entregar.
