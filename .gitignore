@@ -1,0 +1,13 @@
+# Arquivos pessoais (planilhas, currículo...) usados na nuvem: nunca entram no Git.
+arquivos/
+*.xlsx
+*.xlsm
+*.xls
+*.csv
+*.docx
+*.pdf
+*.xlsb
+*.ods
+*.doc
+*.odt
+*.pptx

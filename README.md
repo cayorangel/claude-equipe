@@ -7,6 +7,8 @@ A equipe é um **plugin do Claude Code**. Você instala uma vez em cada computad
 ## O que tem aqui
 
 ```
+CLAUDE.md, .claude/              a mesma equipe para a nuvem (gerados pelo script; não edite à mão)
+.gitignore                        impede que planilhas e arquivos pessoais entrem no Git
 .claude-plugin/marketplace.json   "loja" com dois plugins: a equipe e o painel "Equipe ao vivo"
 plugins/equipe-ao-vivo/
   .claude-plugin/plugin.json      nome e versão do painel
@@ -27,7 +29,7 @@ plugins/equipe/
     revisor-codigo.md             Sonnet - revisa mudanças antes do commit
 pasta-planilhas/.claude/
   settings.json                   modelo do arquivo que a instalação cria na sua pasta de planilhas (usa Sonnet lá)
-scripts/gerar-regras-json.py      gera o regras.json a partir do regras.md
+scripts/gerar-regras-json.py      gera o regras.json e a versão para a nuvem a partir de plugins/equipe
 ```
 
 No Claude Code, os subagentes aparecem com o prefixo do plugin: `equipe:leitor-planilhas`, `equipe:explorador` etc.
@@ -75,11 +77,26 @@ Um painel ao lado do chat (no app desktop e no terminal) que mostra, enquanto o 
 
 Ele abre sozinho em cada sessão; se fechar, digite `/equipe`. O botão **Limpar concluídos** tira da lista quem já terminou com sucesso. O painel só observa: não muda nem bloqueia nada do que os agentes fazem. Precisa de um Claude Code recente (testado na v2.1.321); em versões antigas ele simplesmente não aparece, e a equipe funciona normalmente.
 
+## Na nuvem (claude.ai/code): a mesma equipe em casa, no trabalho e no celular
+
+A nuvem não instala plugins, mas lê o `CLAUDE.md` e os subagentes em `.claude/agents/` que estão dentro do repositório. Por isso este repositório traz uma cópia da equipe pronta para a nuvem, gerada pelo script a partir de `plugins/equipe`.
+
+Como usar:
+1. Abra **claude.ai/code** (ou a aba Code do app Claude no celular) e entre com a sua conta. Na primeira vez, conecte o GitHub quando ele pedir.
+2. Escolha o repositório **cayorangel/claude-equipe** e comece a conversa.
+3. Mande as planilhas direto na conversa. O Claude trabalha com elas na pasta `arquivos/` e diz o nome do arquivo gerado.
+
+As sessões ficam na nuvem: você começa no trabalho e continua em casa ou no celular, com o computador desligado.
+
+**Atenção:** este repositório é **público**. As regras da nuvem mandam nunca colocar seus arquivos no Git, e o `.gitignore` bloqueia planilhas, `.docx`, `.pdf` e a pasta `arquivos/`. Mesmo assim, não peça para commitar nada enquanto estiver trabalhando com arquivos pessoais.
+
+O painel "Equipe ao vivo" é um plugin e por isso não aparece na nuvem; o próprio site mostra o andamento dos subagentes.
+
 ## Como mudar a equipe
 
 Em qualquer computador, peça ao Claude Code algo como:
 
-> Na minha equipe (repositório `cayorangel/claude-equipe`), mude a regra X / crie um subagente para Y. Se mudar `plugins/equipe/regras.md`, rode `python scripts/gerar-regras-json.py` para atualizar o `regras.json`. Aumente a versão em `plugins/equipe/.claude-plugin/plugin.json`, faça commit e push.
+> Na minha equipe (repositório `cayorangel/claude-equipe`), mude a regra X / crie um subagente para Y. Se mudar `plugins/equipe/regras.md` ou um subagente, rode `python scripts/gerar-regras-json.py` para atualizar o `regras.json` e a versão para a nuvem. Aumente a versão em `plugins/equipe/.claude-plugin/plugin.json`, faça commit e push.
 
 **Importante:** aumentar a versão (ex.: `1.0.0` → `1.0.1`) é o que avisa os outros computadores que há novidade. Sem isso, eles não atualizam.
 
